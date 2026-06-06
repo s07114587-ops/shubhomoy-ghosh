@@ -35,8 +35,9 @@
             text-align: center;
         }
 
+        /* পার্সেন্টেজ (%) চিহ্নগুলো এখানে ঠিক করে দেওয়া হয়েছে */
         @keyframes hackerWobble {
-            0 { transform: rotate(-1deg); text-shadow: 0 0 10px #ff007f; }
+            0% { transform: rotate(-1deg); text-shadow: 0 0 10px #ff007f; }
             100% { transform: scale(1.05) rotate(1deg); text-shadow: 0 0 25px #00ffcc, 0 0 40px #00ffcc; }
         }
 
@@ -163,11 +164,10 @@
       let deferredPrompt;
       const installBtn = document.getElementById('installBtn');
 
-      // ব্রাউজার যখন অ্যাপটি ইন্সটল করার উপযুক্ত মনে করবে
       window.addEventListener('beforeinstallprompt', (e) => {
         e.preventDefault();
         deferredPrompt = e;
-        installBtn.style.display = 'block'; // বাটন দেখাও
+        installBtn.style.display = 'block'; 
       });
 
       installBtn.addEventListener('click', (e) => {
@@ -180,7 +180,6 @@
         }
       });
 
-      // প্রোফেশনাল sw.js ফাইল রেজিস্টার করা (Blob ছাড়া আসল ফাইল)
       if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
           navigator.serviceWorker.register('/sw.js')
