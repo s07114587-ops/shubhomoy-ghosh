@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+	<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>😀Shubhomoy - Modified Version😃</title>
+    <style>
+        /* ১. ব্যাকগ্রাউন্ডে নিয়ন সাইবারপঙ্ক ভাইব */
+        body {
+            background-color: #0a0a12;
+            background-image: 
+                linear-gradient(rgba(0, 255, 204, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 204, 0.05) 1px, transparent 1px),
+                url('1.png'); /* তোর ওরিজিনাল ইমেজটাও মিক্স থাকবে */
+            background-size: 20px 20px, 20px 20px, cover;
+            background-repeat: repeat, repeat, no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+            margin: 0;
+            padding: 20px;
+            color: white;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            text-align: center;
+        }
+
+        /* ২. হেডিং-এর জন্য আরও খতরনাক গ্লোয়িং অ্যানিমেশন */
+        @keyframes hackerWobble {
+            0% { transform: rotate(-1deg); text-shadow: 0 0 10px #ff007f; }
+            100% { transform: scale(1.05) rotate(1deg); text-shadow: 0 0 25px #00ffcc, 0 0 40px #00ffcc; }
+        }
+
+        .hacker-title {
+            font-family: 'Algerian', sans-serif;
+            font-size: clamp(26px, 6vw, 52px);
+            color: #fff;
+            margin-top: 25px;
+        }
+
+        .wobble-text {
+            display: inline-block;
+            animation: hackerWobble 1.5s ease-in-out infinite alternate;
+            text-decoration: none;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        /* ৩. লিংক কন্টেইনারকে করলাম সাইবার কার্ড */
+        .link-container {
+            margin: 30px 0;
+            background: rgba(10, 10, 18, 0.85);
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            border: 2px solid #00ffcc;
+            box-shadow: 0 0 15px rgba(0, 255, 204, 0.2);
+        }
+
+        /* লিংকগুলোকে বানালাম গেমিং বাটন */
+        .link-container a {
+            color: #00ffcc;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            margin: 0 15px;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .link-container a:hover {
+            color: #fff;
+            background: #ff007f;
+            border-color: #ff007f;
+            box-shadow: 0 0 15px #ff007f;
+            transform: translateY(-3px);
+        }
+
+        /* ৪. মাঝখানের ইমেজ ৩.jpg এর খতরনাক বর্ডার */
+        .neon-img {
+            width: 90%;
+            max-width: 320px;
+            height: auto;
+            border: 4px solid #fff;
+            border-radius: 20px;
+            box-shadow: 0 0 20px #00ffcc, 0 0 40px #ff007f;
+            transition: 0.5s;
+        }
+        
+        .neon-img:hover {
+            transform: scale(1.05) rotate(2deg);
+        }
+
+        /* ৫. ক্রিকবাজ লাইভ স্কোর বাটন */
+        .live-score {
+            width: 130px;
+            margin-top: 30px;
+            border-radius: 12px;
+            transition: 0.4s;
+            border: 2px solid orange;
+        }
+
+        .live-score:hover {
+            transform: scale(1.15) rotate(-3deg);
+            box-shadow: 0 0 20px orange;
+        }
+    </style>
+</head>
+<body>
+
+    <marquee style="color: #00ffcc; font-size: 20px; font-weight: bold; background: rgba(0,0,0,0.5); padding: 8px; border-bottom: 2px solid #ff007f;">
+        ⚡ SHUBHOMOY'S OFFCIAL SITE IS NOW MODIFIED & LIVE ON NETLIFY! ⚡
+    </marquee>
+
+    <div class="hacker-title">
+        <span class="wobble-text">😎 SHUBHOMOY DEV LAB 😎</span>
+    </div>
+
+    <div>
+        <div class="link-container">
+            <a href="https://youtu.be/E7tCnT5LFLA?si=_8zo53Kc7KXo7hbk" target="_blank">📺 Secret Video</a>
+            <a href="https://i.pinimg.com/originals/c5/62/66/c56266dc0b47a35cb31e2a32622cedd5.gif" target="_blank">🖼️ Cool Photo</a>
+            <a href="https://poki.com/?utm_source=web_app_manifest" target="_blank">🏹 Play Games</a>
+        </div>
+    </div>
+
+    <div>
+        <img src="3.jpg" alt="Profile" class="neon-img">
+    </div>
+
+    <div style="margin-top: 40px;">
+        <a href="https://www.cricbuzz.com" target="_blank">
+            <img src="4.jpg" alt="Live Score" class="live-score" title="Click for Live Scorecard!">
+        </a>
+        <p style="font-size: 14px; color: #ffaa00; font-weight: bold; margin-top: 8px; text-shadow: 0 0 5px black;">🏏 Tap to check Live Cricket Score!</p>
+    </div>
+
+</body>
+</html>
