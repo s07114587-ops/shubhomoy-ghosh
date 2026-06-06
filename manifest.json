@@ -26,6 +26,22 @@
       "sizes": "512x512",
       "type": "image/png"
     }
+    {
+  "name": "Shubhomoy Dev",
+  "short_name": "Shubhomoy Dev",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#6200ea",
+  "theme_color": "#6200ea",
+  "icons": [
+    {
+      "src": "android-chrome-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
   ]
 }
 {
