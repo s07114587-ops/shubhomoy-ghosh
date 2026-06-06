@@ -211,4 +211,30 @@
     });
   });
 </script>
+    <script>
+  // সার্ভিস ওয়ার্কার রেজিস্ট্রেশন এবং ক্যাশ ক্লিয়ারিং
+  if ('serviceWorker' in navigator) {
+    const swCode = `
+      const CACHE_NAME = 'my-site-cache-v2'; // ভার্সন বদলে v2 করলাম
+      self.addEventListener('install', e => {
+        self.skipWaiting(); // পুরোনো সার্ভিস ওয়ার্কারকে সাথে সাথে তাড়িয়ে দেবে
+        e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['/', '/index.html'])));
+      });
+      self.addEventListener('activate', e => {
+        e.waitUntil(
+          caches.keys().then(keys => Promise.all(
+            keys.map(key => {
+              if (key !== CACHE_NAME) return caches.delete(key); // পুরোনো ক্যাশ ডিলিট
+            })
+          ))
+        );
+      });
+      self.addEventListener('fetch', e => {
+        e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
+      });
+    `;
+    const blob = new Blob([swCode], { type: 'application/javascript' });
+    navigator.serviceWorker.register(URL.createObjectURL(blob));
+  }
+</script>
 </html>
