@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <link rel="manifest" href="manifest.json">
+    <link rel="manifest" href="manifest.json?v=3">
     <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-    <link rel="manifest" href="manifest.json">
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>😎 Shubhomoy Dev Lab 😎</title>
@@ -36,7 +36,7 @@
         }
 
         @keyframes hackerWobble {
-            0% { transform: rotate(-1deg); text-shadow: 0 0 10px #ff007f; }
+            0 { transform: rotate(-1deg); text-shadow: 0 0 10px #ff007f; }
             100% { transform: scale(1.05) rotate(1deg); text-shadow: 0 0 25px #00ffcc, 0 0 40px #00ffcc; }
         }
 
@@ -119,40 +119,22 @@
     <marquee style="color: #00ffcc; font-size: 20px; font-weight: bold; background: rgba(0,0,0,0.5); padding: 8px; border-bottom: 2px solid #ff007f;">
         ⚡ SHUBHOMOY'S OFFICIAL SITE IS NOW UPDATED & LIVE! ⚡
     </marquee>
+
     <button id="installBtn" style="
-    display: none; 
-    padding: 15px 30px; 
-    font-size: 18px; 
-    font-weight: bold; 
-    color: #ffffff; 
-    background-color: #6200ea; 
-    border: none; 
-    border-radius: 50px; 
-    cursor: pointer; 
-    box-shadow: 0 6px 10px rgba(0,0,0,0.4);
-    margin: 30px auto;
-    transition: transform 0.2s;">
-    🚀 Install Now
-</button>
-
-<script>
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'block'; // বাটনটি তখনই দেখাবে যখন ইন্সটল করা সম্ভব
-  });
-
-  installBtn.addEventListener('click', (e) => {
-    installBtn.style.display = 'none';
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      deferredPrompt = null;
-    });
-  });
-</script>
+        display: none; 
+        padding: 15px 30px; 
+        font-size: 18px; 
+        font-weight: bold; 
+        color: #ffffff; 
+        background-color: #6200ea; 
+        border: none; 
+        border-radius: 50px; 
+        cursor: pointer; 
+        box-shadow: 0 6px 10px rgba(0,0,0,0.4);
+        margin: 30px auto;
+        transition: transform 0.2s;">
+        🚀 Install Now
+    </button>
 
     <div class="hacker-title">
         <span class="wobble-text">😎 SHUBHOMOY DEV LAB 😎</span>
@@ -176,65 +158,36 @@
         </a>
         <p style="font-size: 14px; color: #ffaa00; font-weight: bold; margin-top: 8px; text-shadow: 0 0 5px black;">🏏 Tap to check Live Cricket Score!</p>
     </div>
-</body>
-    <button id="installBtn" style="
-    display: none; 
-    padding: 15px 30px; 
-    font-size: 18px; 
-    font-weight: bold; 
-    color: #ffffff; 
-    background-color: #6200ea; 
-    border: none; 
-    border-radius: 50px; 
-    cursor: pointer; 
-    box-shadow: 0 6px 10px rgba(0,0,0,0.4);
-    margin: 30px auto;
-    transition: transform 0.2s;">
-    🚀 Install Now
-</button>
 
-<script>
-  let deferredPrompt;
-  const installBtn = document.getElementById('installBtn');
-
-  window.addEventListener('beforeinstallprompt', (e) => {
-    e.preventDefault();
-    deferredPrompt = e;
-    installBtn.style.display = 'block'; // বাটনটি তখনই দেখাবে যখন ইন্সটল করা সম্ভব
-  });
-
-  installBtn.addEventListener('click', (e) => {
-    installBtn.style.display = 'none';
-    deferredPrompt.prompt();
-    deferredPrompt.userChoice.then((choiceResult) => {
-      deferredPrompt = null;
-    });
-  });
-</script>
     <script>
-  // সার্ভিস ওয়ার্কার রেজিস্ট্রেশন এবং ক্যাশ ক্লিয়ারিং
-  if ('serviceWorker' in navigator) {
-    const swCode = `
-      const CACHE_NAME = 'my-site-cache-v2'; // ভার্সন বদলে v2 করলাম
-      self.addEventListener('install', e => {
-        self.skipWaiting(); // পুরোনো সার্ভিস ওয়ার্কারকে সাথে সাথে তাড়িয়ে দেবে
-        e.waitUntil(caches.open(CACHE_NAME).then(c => c.addAll(['/', '/index.html'])));
+      let deferredPrompt;
+      const installBtn = document.getElementById('installBtn');
+
+      // ব্রাউজার যখন অ্যাপটি ইন্সটল করার উপযুক্ত মনে করবে
+      window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        installBtn.style.display = 'block'; // বাটন দেখাও
       });
-      self.addEventListener('activate', e => {
-        e.waitUntil(
-          caches.keys().then(keys => Promise.all(
-            keys.map(key => {
-              if (key !== CACHE_NAME) return caches.delete(key); // পুরোনো ক্যাশ ডিলিট
-            })
-          ))
-        );
+
+      installBtn.addEventListener('click', (e) => {
+        installBtn.style.display = 'none';
+        if (deferredPrompt) {
+          deferredPrompt.prompt();
+          deferredPrompt.userChoice.then((choiceResult) => {
+            deferredPrompt = null;
+          });
+        }
       });
-      self.addEventListener('fetch', e => {
-        e.respondWith(caches.match(e.request).then(r => r || fetch(e.request)));
-      });
-    `;
-    const blob = new Blob([swCode], { type: 'application/javascript' });
-    navigator.serviceWorker.register(URL.createObjectURL(blob));
-  }
-</script>
+
+      // প্রোফেশনাল sw.js ফাইল রেজিস্টার করা (Blob ছাড়া আসল ফাইল)
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js')
+            .then(reg => console.log('Service Worker Registered!', reg))
+            .catch(err => console.log('Service Worker Failed!', err));
+        });
+      }
+    </script>
+</body>
 </html>
