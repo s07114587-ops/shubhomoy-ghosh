@@ -173,6 +173,39 @@
         </a>
         <p style="font-size: 14px; color: #ffaa00; font-weight: bold; margin-top: 8px; text-shadow: 0 0 5px black;">🏏 Tap to check Live Cricket Score!</p>
     </div>
-
 </body>
+    <button id="installBtn" style="
+    display: none; 
+    padding: 15px 30px; 
+    font-size: 18px; 
+    font-weight: bold; 
+    color: #ffffff; 
+    background-color: #6200ea; 
+    border: none; 
+    border-radius: 50px; 
+    cursor: pointer; 
+    box-shadow: 0 6px 10px rgba(0,0,0,0.4);
+    margin: 30px auto;
+    transition: transform 0.2s;">
+    🚀 Install Now
+</button>
+
+<script>
+  let deferredPrompt;
+  const installBtn = document.getElementById('installBtn');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    installBtn.style.display = 'block'; // বাটনটি তখনই দেখাবে যখন ইন্সটল করা সম্ভব
+  });
+
+  installBtn.addEventListener('click', (e) => {
+    installBtn.style.display = 'none';
+    deferredPrompt.prompt();
+    deferredPrompt.userChoice.then((choiceResult) => {
+      deferredPrompt = null;
+    });
+  });
+</script>
 </html>
