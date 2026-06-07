@@ -1,12 +1,11 @@
 {
-{
   "name": "Shubhomoy Dev",
   "short_name": "SG Dev",
   "description": "My first awesome web app created with HTML",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#000000",
-  "theme_color": "#6656b8",
+  "theme_color": "#00e5ff",
   "orientation": "portrait",
   "icons": [
     {
