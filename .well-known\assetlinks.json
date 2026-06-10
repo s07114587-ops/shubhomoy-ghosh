@@ -1,0 +1,8 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target": {
+        "namespace": "android_app",
+        "package_name": "su.dnc.a.twa",
+        "sha256_cert_fingerprints": ["D9:CD:FA:BF:CC:44:42:25:53:2B:91:A5:70:2C:0C:6B:F8:D6:09:FD:D7:D5:54:DE:5B:65:D3:7E:A4:29:72:D2"]
+      }
+    }]
