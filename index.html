@@ -8,12 +8,12 @@
     
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>😎 Shubhomoy Dev Lab 😎</title>
+    <title>🏢 SG Main Office 🏢</title>
 
     <link rel="icon" type="image/x-icon" href="favicon.ico">
 
-    <meta property="og:title" content="Shubhomoy Dev Lab">
-    <meta property="og:description" content="Welcome to my official developer lab!">
+    <meta property="og:title" content="SG Main Office">
+    <meta property="og:description" content="Welcome to the official SG Main Office & Developer Lab!">
     <meta property="og:image" content="https://shubhomoyghosh.vercel.app/android-chrome-512x512.png">
     <meta property="og:url" content="https://shubhomoyghosh.vercel.app/">
     <meta property="og:type" content="website">
@@ -36,7 +36,6 @@
             text-align: center;
         }
 
-        /* পার্সেন্টেজ (%) চিহ্নগুলো এখানে ঠিক করে দেওয়া হয়েছে */
         @keyframes hackerWobble {
             0% { transform: rotate(-1deg); text-shadow: 0 0 10px #ff007f; }
             100% { transform: scale(1.05) rotate(1deg); text-shadow: 0 0 25px #00ffcc, 0 0 40px #00ffcc; }
@@ -47,6 +46,7 @@
             font-size: clamp(26px, 6vw, 52px);
             color: #fff;
             margin-top: 25px;
+            margin-bottom: 30px;
         }
 
         .wobble-text {
@@ -57,8 +57,83 @@
             letter-spacing: 2px;
         }
 
+        /* নতুন কার্ড ডিজাইন */
+        .info-card {
+            background: rgba(10, 10, 18, 0.85);
+            border: 2px solid #ff007f;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px auto;
+            max-width: 600px;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.3);
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 30px rgba(255, 0, 127, 0.6);
+        }
+
+        .info-card h2 {
+            color: #00ffcc;
+            margin-top: 0;
+            font-size: 28px;
+        }
+
+        .info-card p {
+            color: #fff;
+            font-size: 18px;
+            line-height: 1.6;
+        }
+
+        .ai-btn {
+            display: inline-block;
+            background: #ff007f;
+            color: #fff;
+            padding: 12px 30px;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 18px;
+            margin-top: 15px;
+            transition: 0.3s;
+            box-shadow: 0 0 15px #ff007f;
+        }
+
+        .ai-btn:hover {
+            background: #00ffcc;
+            box-shadow: 0 0 20px #00ffcc;
+            color: #000;
+        }
+
+        .profile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .profile-links a {
+            display: block;
+            color: #00ffcc;
+            text-decoration: none;
+            font-size: 18px;
+            padding: 12px;
+            border: 1px dashed #00ffcc;
+            border-radius: 8px;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .profile-links a:hover {
+            background: #00ffcc;
+            color: #000;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+
         .link-container {
-            margin: 30px 0;
+            margin: 30px auto;
             background: rgba(10, 10, 18, 0.85);
             padding: 20px;
             border-radius: 15px;
@@ -72,7 +147,7 @@
             text-decoration: none;
             font-size: 18px;
             font-weight: bold;
-            margin: 0 15px;
+            margin: 5px 15px;
             padding: 10px 20px;
             border-radius: 8px;
             border: 1px solid transparent;
@@ -96,6 +171,7 @@
             border-radius: 20px;
             box-shadow: 0 0 20px #00ffcc, 0 0 40px #ff007f;
             transition: 0.5s;
+            margin-top: 30px;
         }
         
         .neon-img:hover {
@@ -119,7 +195,7 @@
 <body>
 
     <marquee style="color: #00ffcc; font-size: 20px; font-weight: bold; background: rgba(0,0,0,0.5); padding: 8px; border-bottom: 2px solid #ff007f;">
-        ⚡ SHUBHOMOY'S OFFICIAL SITE IS NOW UPDATED & LIVE! ⚡
+        ⚡ SG MAIN OFFICE IS NOW UPDATED & LIVE! ⚡
     </marquee>
 
     <button id="installBtn" style="
@@ -139,9 +215,29 @@
     </button>
 
     <div class="hacker-title">
-        <span class="wobble-text">😎 SHUBHOMOY'OFFICIAL SITE😎</span>
+        <span class="wobble-text">😎 SG MAIN OFFICE 😎</span>
     </div>
 
+    <!-- ওয়েলকাম এবং মেইল মেসেজ সেকশন -->
+    <div class="info-card">
+        <h2>Welcome! 🚀</h2>
+        <p>Thanks for mailing! We will see your mail shortly.</p>
+        <p>In the meantime, you can try our crazy AI tool, <strong>SAI!</strong> 👇</p>
+        <a href="https://sai.dnc.su/" target="_blank" class="ai-btn">👉 Try SAI AI Now!</a>
+    </div>
+
+    <!-- প্রোফাইল এবং প্রজেক্ট সেকশন -->
+    <div class="info-card">
+        <h2>My Projects & Profiles:</h2>
+        <div class="profile-links">
+            <a href="https://shubhomoy.dnc.su/" target="_blank">🌐 Main Website</a>
+            <a href="https://dev.to/sgdev_sg_dev" target="_blank">💻 Dev.to Profile</a>
+            <a href="https://www.deviantart.com/sgdev111" target="_blank">🎨 DeviantArt Gallery</a>
+            <a href="https://www.behance.net/sgdev1" target="_blank">💼 Behance Portfolio</a>
+        </div>
+    </div>
+
+    <!-- আগের গেমস এবং ফান লিঙ্ক -->
     <div>
         <div class="link-container">
             <a href="https://famelack.com/" target="_blank">📺 Secret Video</a>
