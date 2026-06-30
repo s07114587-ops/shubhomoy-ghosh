@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="google-site-verification" content="zi4AuI1TBAc7h59Ou7MizPXcrHPj2o2g3eZaiDcUqbY" />
+    <link rel="manifest" href="manifest.json?v=3">
+    <link rel="icon" type="image/png" sizes="512x512" href="android-chrome-512x512.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🏢 SG Main Office 🏢</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <meta property="og:title" content="SG Main Office">
+    <meta property="og:description" content="Welcome to the official SG Main Office & Developer Lab!">
+    <meta property="og:image" content="https://shubhomoyghosh.vercel.app/android-chrome-512x512.png">
+    <meta property="og:url" content="https://shubhomoyghosh.vercel.app/">
+    <meta property="og:type" content="website">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@700;800&display=swap" rel="stylesheet">
+
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --bg: #050510;
+            --surface: rgba(255,255,255,0.04);
+            --border: rgba(255,255,255,0.08);
+            --pink: #ff2d78;
+            --cyan: #00f5c4;
+            --white: #f0f0f8;
+            --muted: #888aaa;
+            --font-display: 'Syne', sans-serif;
+            --font-body: 'Space Grotesk', sans-serif;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+
+        body {
+            background-color: var(--bg);
+            background-image:
+                radial-gradient(ellipse 80% 60% at 50% -10%, rgba(255,45,120,0.18) 0%, transparent 70%),
+                url('1.png');
+            background-size: auto, cover;
+            background-repeat: no-repeat, no-repeat;
+            background-attachment: fixed;
+            background-position: center top, center;
+            color: var(--white);
+            font-family: var(--font-body);
+            min-height: 100vh;
+        }
+
+        /* ── Ticker ── */
+        .ticker {
+            background: rgba(255,45,120,0.12);
+            border-bottom: 1px solid var(--pink);
+            padding: 10px 0;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+        .ticker-inner {
+            display: inline-block;
+            animation: ticker 22s linear infinite;
+            color: var(--cyan);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+        }
+        @keyframes ticker {
+            0%   { transform: translateX(100vw); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* ── Layout ── */
+        .wrapper {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 0 20px 80px;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            text-align: center;
+            padding: 70px 0 40px;
+        }
+        .hero-eyebrow {
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--pink);
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+        .hero-title {
+            font-family: var(--font-display);
+            font-size: clamp(38px, 9vw, 72px);
+            font-weight: 800;
+            line-height: 1;
+            letter-spacing: -0.02em;
+            background: linear-gradient(135deg, #fff 30%, var(--cyan) 70%, var(--pink) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 4s ease-in-out infinite alternate;
+            background-size: 200% 200%;
+        }
+        @keyframes shimmer {
+            0%   { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+        .hero-sub {
+            margin-top: 16px;
+            color: var(--muted);
+            font-size: 16px;
+        }
+
+        /* ── Profile Photo ── */
+        .profile-photo-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 32px 0 0;
+        }
+        .profile-photo {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--pink);
+            box-shadow: 0 0 0 6px rgba(255,45,120,0.12), 0 0 40px rgba(0,245,196,0.2);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .profile-photo:hover {
+            transform: scale(1.07);
+            box-shadow: 0 0 0 8px rgba(255,45,120,0.2), 0 0 60px rgba(0,245,196,0.35);
+        }
+
+        /* ── Install Button ── */
+        #installBtn {
+            display: none;
+            margin: 0 auto;
+            padding: 15px 36px;
+            font-size: 17px;
+            font-weight: 700;
+            font-family: var(--font-body);
+            color: #fff;
+            background: linear-gradient(135deg, #6200ea 0%, var(--pink) 100%);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 0 3px rgba(98,0,234,0.25), 0 4px 24px rgba(98,0,234,0.5);
+            transition: transform 0.2s, box-shadow 0.2s;
+            letter-spacing: 0.03em;
+        }
+        /* Shown only via JS once the browser confirms the PWA can actually be installed */
+        #installBtn.visible {
+            display: inline-block;
+        }
+        #installBtn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 0 4px rgba(255,45,120,0.3), 0 8px 32px rgba(98,0,234,0.6);
+        }
+        #installBtn:active {
+            transform: translateY(-1px);
+        }
+        #installBtn:disabled {
+            opacity: 0.6;
+            cursor: default;
+            transform: none;
+        }
+        .install-wrap {
+            text-align: center;
+            margin-top: 24px;
+        }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: 32px 28px;
+            margin-top: 24px;
+            backdrop-filter: blur(12px);
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .card:hover {
+            border-color: rgba(255,45,120,0.35);
+            box-shadow: 0 0 32px rgba(255,45,120,0.12);
+        }
+        .card-label {
+            font-size: 11px;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: var(--muted);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        .card h2 {
+            font-family: var(--font-display);
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--cyan);
+            margin-bottom: 12px;
+        }
+        .card p {
+            color: #ccc;
+            font-size: 15px;
+            line-height: 1.7;
+        }
+        .card p strong { color: var(--white); }
+
+        /* ── SAI Button ── */
+        .sai-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            margin-top: 20px;
+            padding: 13px 30px;
+            background: var(--pink);
+            color: #fff;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 15px;
+            transition: background 0.25s, transform 0.25s, box-shadow 0.25s;
+            box-shadow: 0 0 20px rgba(255,45,120,0.4);
+        }
+        .sai-btn:hover {
+            background: var(--cyan);
+            color: #000;
+            transform: translateY(-2px);
+            box-shadow: 0 0 28px rgba(0,245,196,0.45);
+        }
+
+        /* ── Profile Links ── */
+        .profile-links {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .profile-links a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 18px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            color: var(--white);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+        }
+        .profile-links a:hover {
+            background: rgba(0,245,196,0.08);
+            border-color: var(--cyan);
+            transform: translateX(4px);
+        }
+        .profile-links a .icon {
+            font-size: 20px;
+            width: 28px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+
+        /* ── Quick Links ── */
+        .quick-links {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .quick-links a {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 18px 10px;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            color: var(--cyan);
+            text-decoration: none;
+            font-size: 13px;
+            font-weight: 600;
+            text-align: center;
+            transition: background 0.25s, border-color 0.25s, transform 0.2s;
+        }
+        .quick-links a .ql-icon { font-size: 24px; }
+        .quick-links a:hover {
+            background: rgba(255,45,120,0.1);
+            border-color: var(--pink);
+            color: #fff;
+            transform: translateY(-3px);
+        }
+
+        /* ── Cricket ── */
+        .cricket-wrap {
+            text-align: center;
+            margin-top: 24px;
+        }
+        .cricket-wrap a {
+            display: inline-block;
+        }
+        .cricket-img {
+            width: 110px;
+            border-radius: 14px;
+            border: 2px solid orange;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .cricket-img:hover {
+            transform: scale(1.1) rotate(-2deg);
+            box-shadow: 0 0 24px rgba(255,165,0,0.5);
+        }
+        .cricket-label {
+            font-size: 13px;
+            color: #ffaa00;
+            font-weight: 600;
+            margin-top: 10px;
+        }
+
+        /* ── Footer ── */
+        .footer {
+            text-align: center;
+            padding: 40px 20px 20px;
+            color: var(--muted);
+            font-size: 13px;
+        }
+        .footer span { color: var(--pink); }
+
+        /* ── Divider ── */
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+            margin: 8px 0;
+        }
+
+        @media (max-width: 480px) {
+            .quick-links { grid-template-columns: repeat(3, 1fr); }
+            .card { padding: 24px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Ticker -->
+    <div class="ticker">
+        <span class="ticker-inner">⚡ SG MAIN OFFICE IS NOW UPDATED &amp; LIVE! &nbsp;&nbsp;&nbsp; ⚡ SG MAIN OFFICE IS NOW UPDATED &amp; LIVE! &nbsp;&nbsp;&nbsp; ⚡ SG MAIN OFFICE IS NOW UPDATED &amp; LIVE!</span>
+    </div>
+
+    <div class="wrapper">
+
+        <!-- Hero -->
+        <div class="hero">
+            <p class="hero-eyebrow">Developer &amp; Creator</p>
+            <h1 class="hero-title">SG MAIN OFFICE</h1>
+            <p class="hero-sub">Official hub &amp; developer lab of SG 😎</p>
+        </div>
+
+        <!-- Profile Photo (uses android-chrome-512x512.png; fallback handled in JS) -->
+        <div class="profile-photo-wrap">
+            <img id="profilePhoto" src="android-chrome-512x512.png" alt="SG Profile" class="profile-photo">
+        </div>
+
+        <!-- Install PWA button -->
+        <div class="install-wrap">
+            <button id="installBtn" type="button">🚀 Install App — 100% Safe</button>
+        </div>
+
+        <!-- Welcome Card -->
+        <div class="card">
+            <p class="card-label">👋 Hey there</p>
+            <h2>Welcome! 🚀</h2>
+            <p>Thanks for mailing! We will see your mail shortly.</p>
+            <p style="margin-top:10px;">In the meantime, you can try our crazy AI tool, <strong>SAI!</strong> 👇</p>
+            <a href="https://sai.dnc.su/" target="_blank" class="sai-btn">👉 Try SAI AI Now!</a>
+        </div>
+
+        <!-- Projects & Profiles -->
+        <div class="card">
+            <p class="card-label">🔗 Links</p>
+            <h2>My Projects &amp; Profiles:</h2>
+            <div class="profile-links">
+                <a href="https://shubhomoy.dnc.su/" target="_blank">
+                    <span class="icon">🌐</span> Main Website
+                </a>
+                <a href="https://dev.to/sgdev_sg_dev" target="_blank">
+                    <span class="icon">💻</span> Dev.to Profile
+                </a>
+                <a href="https://www.deviantart.com/sgdev111" target="_blank">
+                    <span class="icon">🎨</span> DeviantArt Gallery
+                </a>
+                <a href="https://www.behance.net/sgdev1" target="_blank">
+                    <span class="icon">💼</span> Behance Portfolio
+                </a>
+                <a href="mailto:sgdev@netc.fr">
+                    <span class="icon">📧</span> sgdev@netc.fr &nbsp;<span style="color:var(--muted);font-size:13px;">(Official Mail)</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="card">
+            <p class="card-label">✨ Quick Links</p>
+            <div class="quick-links">
+                <a href="https://famelack.com/" target="_blank">
+                    <span class="ql-icon">📺</span> Secret Video
+                </a>
+                <a href="https://i.pinimg.com/originals/c5/62/66/c56266dc0b47a35cb31e2a32622cedd5.gif" target="_blank">
+                    <span class="ql-icon">🖼️</span> Cool Photo
+                </a>
+                <a href="https://poki.com/?utm_source=web_app_manifest" target="_blank">
+                    <span class="ql-icon">🏹</span> Play Games
+                </a>
+            </div>
+        </div>
+
+        <!-- Cricket -->
+        <div class="cricket-wrap">
+            <a href="https://www.cricbuzz.com" target="_blank">
+                <img src="4.jpg" alt="Live Cricket Score" class="cricket-img" title="Click for Live Scorecard!">
+            </a>
+            <p class="cricket-label">🏏 Tap to check Live Cricket Score!</p>
+        </div>
+
+    </div>
+
+    <div class="divider"></div>
+    <div class="footer">
+        Made with <span>♥</span> by SG &nbsp;·&nbsp; SG Main Office
+    </div>
+
+    <script>
+        const installBtn = document.getElementById('installBtn');
+        let deferredPrompt = null;
+
+        function isStandalone() {
+            return window.matchMedia('(display-mode: standalone)').matches
+                || window.navigator.standalone === true;
+        }
+
+        // If the app is already installed, never show the button.
+        if (!isStandalone()) {
+            window.addEventListener('beforeinstallprompt', (e) => {
+                e.preventDefault();
+                deferredPrompt = e;
+                installBtn.classList.add('visible');
+            });
+        }
+
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+            installBtn.disabled = true;
+            deferredPrompt.prompt();
+            try {
+                const { outcome } = await deferredPrompt.userChoice;
+                console.log('PWA install prompt outcome:', outcome);
+            } catch (err) {
+                console.log('PWA install prompt error:', err);
+            } finally {
+                deferredPrompt = null;
+                installBtn.classList.remove('visible');
+                installBtn.disabled = false;
+            }
+        });
+
+        // Hide the button if installation completes via any path.
+        window.addEventListener('appinstalled', () => {
+            deferredPrompt = null;
+            installBtn.classList.remove('visible');
+        });
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js')
+                    .then(reg => console.log('Service Worker Registered!', reg))
+                    .catch(err => console.log('Service Worker Failed!', err));
+            });
+        }
+    </script>
+</body>
+</html>
